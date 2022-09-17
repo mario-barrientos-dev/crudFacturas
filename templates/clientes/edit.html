@@ -1,0 +1,37 @@
+{% include 'header.html' %}
+{% for cliente in clientes %}
+<form action="/update" method="post">
+
+    <div class="card">
+        <div class="card-header">
+           Clientes
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Datos del cliente</h5>
+            <p class="card-text">
+                <div class="form-group">
+                    <label for="txtID">Id: {{cliente[0]}}</label>
+                    <input id="txtID" class="form-control" type="text" name="txtID" value="{{cliente[0]}}" style="display: none;">
+                </div>
+                <div class="form-group">
+                    <label for="txtNombre">Nombre:</label>
+                    <input id="txtNombre" class="form-control" type="text" name="txtNombre" value="{{cliente[1]}}">
+                </div>
+                <div class="form-group">
+                    <label for="txtCorreo">Nombre:</label>
+                    <input id="txtCorreo" class="form-control" type="text" name="txtCorreo" value="{{cliente[2]}}">
+                </div>
+                <div class="form-group">
+                    <label for="intPhone">Correo:</label>
+                    <input id="intPhone" class="form-control" type="text" name="intPhone" value="{{cliente[3]}}">
+                </div>
+                <br>
+                <input onclick="return confirm('¿va ejecutar estos cambios?')" class="btn btn-success" type="submit" value="Editar">
+            </p>
+        </div>
+        <a  class= "btn btn-primary" href="{{url_for("index")}}" class="link">Regresar</a>
+    </div>
+</form>
+
+{% endfor %}
+{% include 'footer.html' %}

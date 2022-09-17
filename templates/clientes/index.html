@@ -1,0 +1,36 @@
+    {% include 'header.html' %}
+    <br>
+    <a href="{{url_for('create')}}" class="btn btn-success">
+      Ingresar nuevo cliente
+    </a>
+    <br>
+    <br>
+    <table class="table table-light">
+      <thead class="thead-light">
+        <tr>
+          <th>Ide del cliente</th>
+          <th>Nombre</th>
+          <th>Correo Electronico</th>
+          <th>Telefono</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cliente in clientes %}
+          <tr>
+            <td>{{ cliente[0] }}</td>
+            <td>{{ cliente[1] }}</td>
+            <td>{{ cliente[2] }}</td>
+            <td>{{ cliente[3] }}</td>
+            <td>
+              <a onclick="return confirm('¿Desea borrar el registro?')" class="btn btn-danger" href="/destroy/{{ cliente[0] }}" class="">Elminar</a>
+              <a class="btn btn-warning"href="/edit/{{ cliente[0] }}" class="">Editar</a>
+              <a class="btn btn-primary"href="/totales/{{cliente[0]}}" class="">Total Facturado</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    {% include 'footer.html' %}
+
